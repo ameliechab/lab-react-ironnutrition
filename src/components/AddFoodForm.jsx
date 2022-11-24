@@ -45,10 +45,10 @@ function AddFoodForm({ setFoodsArray }) {
       <Input value={image} type="text" onChange={handleImageChange} />
 
       <label>Calories</label>
-      <Input value={calories} type="text" onChange={handleCaloriesChange} />
+      <Input value={calories} type="number" onChange={handleCaloriesChange} />
 
       <label>Servings</label>
-      <Input value={servings} type="text" onChange={handleServingsChange} />
+      <Input value={servings} type="number" onChange={handleServingsChange} />
 
       <button type="submit"> Create </button>
     </form>

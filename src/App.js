@@ -9,14 +9,17 @@ import { Card, Row, Col, Divider, Input, Button } from 'antd';
 
 function App() {
   const [foodsArray, setFoodsArray] = useState(foods);
+
+  // Search food
   const [searchString, setSearchString] = useState('');
 
   const displayedFood = foodsArray.filter((food) => {
-    return food.name.includes(searchString);
+    return food.name.toLowerCase().includes(searchString);
   });
 
-  const removeFood = (name) => {
-    const remainingFood = displayedFood.filter((food) => food.name !== name);
+  // Remove food
+  const removeFood = (foodToDelete) => {
+    const remainingFood = displayedFood.filter((food) => food !== foodToDelete);
     setFoodsArray(remainingFood);
   };
 
@@ -30,7 +33,13 @@ function App() {
       </Divider>
       <Row style={{ width: '100%', justifyContent: 'center' }}>
         {displayedFood.map((food) => {
-          return <FoodBox food={food} removeFood={removeFood} />;
+          return (
+            <FoodBox
+              key={food.name + food.calories}
+              food={food}
+              removeFood={removeFood}
+            />
+          );
         })}
       </Row>
     </div>
